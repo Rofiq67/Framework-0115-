@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\MahasiswaController;
+use App\Models\Mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,9 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/helloworld', function(){
     echo "<h1> HELLO </h1>";
@@ -32,3 +34,11 @@ Route::get('/form', function(){
 
 Route::get('add-blog-post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);
+
+Route::get('/', [MahasiswaController::class, 'index']);
+Route::get('/create', [MahasiswaController::class, 'create']);
+Route::post('/store', [MahasiswaController::class, 'store']);
+Route::get('/show/{nim}', [MahasiswaController::class, 'show']);
+Route::post('/update/{nim}', [MahasiswaController::class, 'update']);
+Route::get('/destroy/{nim}', [MahasiswaController::class, 'destroy']);
+
